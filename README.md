@@ -7,7 +7,7 @@ Works with `Conky Manager`
 ## Conky Installation - Archlinux
 
 ```sh
-pacman -Sy conky-lua conky-manager
+pacman -Syu conky-lua conky-manager
 ```
 
 You'll also need `feedparser` python library
@@ -17,7 +17,7 @@ pip install feedparser
 ```
 - system package
 ```sh
-pacman -Sy python-feedparser
+pacman -Syu python-feedparser
 ```
 
 ## Main config - Archlinux
