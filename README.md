@@ -27,14 +27,32 @@ Displays:
 - MPD support (disabled by default)
 
 #### Screenshot:
-![archlinux](https://raw.githubusercontent.com/stefanjarina/my-conky-config/master/archlinux.png)
+![archlinux](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/archlinux.png)
 
 Some things are hardcoded (`network interfaces names`)
 
-## News config - CZ RSS sources
+## News config
+
+Easicly extendible, powered by simple python script
+
+if you want to add resource, just add it in `news.py` to dictionary variable and copy/change lines in conky config.
+
+```python
+sites = {
+	# cz sources
+	'root_cz_clanky': "http://www.root.cz/rss/clanky/",
+	'your_new_resource': "whatever url, best including http/https",  # <--- new
+}
+```
+
+###CZ RSS sources
 
 #### Screenshot:
 
-![news_cz]https://raw.githubusercontent.com/stefanjarina/my-conky-config/master/news_cz.png)
+![news_cz](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/news_cz.png)
 
-## Includes some files not created by me:
+### EN RSS sources
+
+#### Screenshot:
+
+![news_en](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/news_en.png)
