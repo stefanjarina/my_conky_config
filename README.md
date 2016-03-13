@@ -10,6 +10,16 @@ Works with `Conky Manager`
 pacman -Sy conky-lua conky-manager
 ```
 
+You'll also need `feedparser` python library
+- pip installation
+```sh
+pip install feedparser
+```
+- system package
+```sh
+pacman -Sy python-feedparser
+```
+
 ## Main config - Archlinux
 
 Displays:
