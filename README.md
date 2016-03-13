@@ -1,6 +1,6 @@
 # my-conky-config
 conky `1.9.x` config I use on my ArchLinux installation.
-Very well commented for simple extendibility.
+Very well commented for simple extensibility.
 
 Works with `Conky Manager`
 
@@ -63,7 +63,7 @@ Some things are hardcoded (`network interfaces names`)
 
 ## News config
 
-Easicly extendible, powered by simple python script
+Easicly extensible, powered by simple python script.
 
 if you want to add resource, just add it in `news.py` to dictionary variable and copy/change lines in conky config.
 
