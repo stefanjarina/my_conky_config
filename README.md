@@ -1,6 +1,14 @@
 # my-conky-config
 conky `1.9.x` config I use on my ArchLinux installation.
-Very vel commented for simple extendibility
+Very vell commented for simple extendibility.
+
+Works with `Conky Manager`
+
+## Conky Installation - Archlinux
+
+```sh
+pacman -Sy conky-lua conky-manager
+```
 
 ## Main config - Archlinux
 
@@ -25,6 +33,19 @@ Displays:
 - AUDIO (disabled by default)
 - JACK BUFFER SIZE (disabled by default)
 - MPD support (disabled by default)
+
+### IMAP support
+Conky by default doesn't support SSL connections to IMAP, thus I created simple script that returns count of unread emails.
+
+To configure it, just set these 4 variables:
+
+```python
+IMAP_USER = ''
+IMAP_PASS = ''
+IMAP_HOST = 'imap.zoho.com'
+```
+
+Port is set automatically to `imaplib.IMAP4_SSL_PORT`
 
 #### Screenshot:
 ![archlinux](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/archlinux.png)
@@ -56,3 +77,7 @@ sites = {
 #### Screenshot:
 
 ![news_en](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/news_en.png)
+
+## MY DESKTOP:
+
+![archlinux](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/my_archlinux.png)
