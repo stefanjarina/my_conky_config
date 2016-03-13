@@ -1,6 +1,6 @@
 # my-conky-config
 conky `1.9.x` config I use on my ArchLinux installation.
-Very vell commented for simple extendibility.
+Very well commented for simple extendibility.
 
 Works with `Conky Manager`
 
@@ -47,7 +47,6 @@ IMAP_HOST = 'imap.zoho.com'
 
 Port is set automatically to `imaplib.IMAP4_SSL_PORT`
 
-#### Screenshot:
 ![archlinux](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/archlinux.png)
 
 Some things are hardcoded (`network interfaces names`)
@@ -68,13 +67,9 @@ sites = {
 
 ###CZ RSS sources
 
-#### Screenshot:
-
 ![news_cz](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/news_cz.png)
 
 ### EN RSS sources
-
-#### Screenshot:
 
 ![news_en](https://raw.githubusercontent.com/stefanjarina/my_conky_config/master/news_en.png)
 
