@@ -156,10 +156,10 @@ ${voffset -8}${font Open Sans:Bold:size=10}${color dodgerblue3}CPU ${cpubar 4}
 # |--- MODEL
 $color${font}Intel® Core™ ${exec cat /proc/cpuinfo | grep "model name" | cut -f5 -d " " | head -1} @ ${freq_g cpu0}GHz $alignr $cpu% @ ${execi 2 sensors | grep 'Package id 0' | cut -c17-18}°C
 # |--- CORES (4)
-${font}Core 0 - ${execi 2 sensors | grep 'Core 0' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu1}${color}
-${font}Core 1 - ${execi 2 sensors | grep 'Core 1' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu2}${color}
-${font}Core 2 - ${execi 2 sensors | grep 'Core 2' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu3}${color}
-${font}Core 3 - ${execi 2 sensors | grep 'Core 3' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu4}${color}
+${font}Core 0 - ${execi 2 sensors | grep 'Core 0' | cut -c17-18}°C ${alignc 60}${color dodgerblue3}${cpubar cpu1}${color}
+${font}Core 1 - ${execi 2 sensors | grep 'Core 1' | cut -c17-18}°C ${alignc 60}${color dodgerblue3}${cpubar cpu2}${color}
+${font}Core 2 - ${execi 2 sensors | grep 'Core 2' | cut -c17-18}°C ${alignc 60}${color dodgerblue3}${cpubar cpu3}${color}
+${font}Core 3 - ${execi 2 sensors | grep 'Core 3' | cut -c17-18}°C ${alignc 60}${color dodgerblue3}${cpubar cpu4}${color}
 
 # |--- TOP PROCESSES (by cpu)
 ${voffset -10}------------------------------------------------- \
