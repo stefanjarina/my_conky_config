@@ -66,13 +66,13 @@ $color${font Open Sans:size=12}$alignc${time %A}, ${time %d %B %Y}$font$color
 # |--- HEADING
 ${voffset -8}${font Open Sans:Bold:size=10}${color dodgerblue3}WEATHER ${hr 5}
 # |--- NOW
-${color}Now$color${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=795610&u=c" -o ~/.cache/weather.xml}
+${color}Now$color${execi 300 curl -s "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D795610%20and%20u%3D'c'" -o ~/.cache/weather.xml}
 # |--- CONDITION - TEXT
-${alignr 10}${voffset -30}${font Open Sans:size=11}${voffset 10}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | tr '[a-z]' '[A-Z]'}${font}
-${voffset 0}${offset 30}${font Open Sans Light:Bold:size=30}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font}${voffset -10}
-${execi 300 cp -f ./conky_icons/$(grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*").png ~/.cache/weather.png}${image ~/.cache/weather.png -p 180,120 -s 60x60}
-WIND: ${offset 30}${execi 300 grep "yweather:wind" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${execi 300 grep "yweather:units" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
-HUMIDITY: ${offset 5}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "humidity=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}%${voffset -58}
+${alignr 10}${voffset -30}${font Open Sans:size=7}${voffset 10}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | tr '[a-z]' '[A-Z]' | head -1}${font}
+${voffset 0}${offset 30}${font Open Sans Light:Bold:size=30}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | head -1}°${font}${voffset -10}
+${execi 300 cp -f ./conky_icons/$(grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"| head -1).png ~/.cache/weather.png}${image ~/.cache/weather.png -p 180,120 -s 60x60}
+WIND: ${offset 30}${execi 300 grep "yweather:wind" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"| sed -n 2p}${execi 300 grep "yweather:units" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"| head -1}
+HUMIDITY: ${offset 5}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "humidity=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"| head -1}%${voffset -58}
 # |--- FORECAST
 # |------ HEADING
 ${voffset 60}${font Open Sans:Bold:size=10}${color dodgerblue3}FORECAST${voffset -3}\
@@ -109,7 +109,7 @@ ${voffset -55}
 # |--- HEADING
 ${voffset 40}${font Open Sans:Bold:size=10}${color dodgerblue3}SYSTEM ${hr 5}$color${font}
 # |--- KERNEL
-$sysname ${exec uname -r | tr -d "\-1MANJRO"} $alignr $machine
+$sysname ${exec uname -r | sed 's/-1-MANJARO//'} $alignr $machine
 # |--- UPTIME
 Uptime: $alignr $uptime
 # |--- PACMAN INFO
@@ -154,12 +154,12 @@ $color${font Open Sans:bold:size=8.5}Free:$font $swapfree
 # |--- HEADING (BAR - ALL CORES)
 ${voffset -8}${font Open Sans:Bold:size=10}${color dodgerblue3}CPU ${cpubar 4}
 # |--- MODEL
-$color${font}Intel® Core™ ${pre_exec cat /proc/cpuinfo | grep "model name" | cut -f5 -d " "} @ ${freq_g cpu0}GHz $alignr $cpu% @ ${execi 2 sensors | grep 'Physical id 0' | cut -c18-19}°C
+$color${font}Intel® Core™ ${exec cat /proc/cpuinfo | grep "model name" | cut -f5 -d " " | head -1} @ ${freq_g cpu0}GHz $alignr $cpu% @ ${execi 2 sensors | grep 'Package id 0' | cut -c17-18}°C
 # |--- CORES (4)
 ${font}Core 0 - ${execi 2 sensors | grep 'Core 0' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu1}${color}
-#${font}Core 1 - ${execi 2 sensors | grep 'Core 1' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu2}${color}
-#${font}Core 2 - ${execi 2 sensors | grep 'Core 2' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu3}${color}
-#${font}Core 3 - ${execi 2 sensors | grep 'Core 3' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu4}${color}
+${font}Core 1 - ${execi 2 sensors | grep 'Core 1' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu2}${color}
+${font}Core 2 - ${execi 2 sensors | grep 'Core 2' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu3}${color}
+${font}Core 3 - ${execi 2 sensors | grep 'Core 3' | cut -c18-19}°C ${alignc 60}${color dodgerblue3}${cpubar cpu4}${color}
 
 # |--- TOP PROCESSES (by cpu)
 ${voffset -10}------------------------------------------------- \
@@ -183,12 +183,12 @@ ${voffset -8}${font Open Sans:Bold:size=10}${color dodgerblue3}NETWORK ${hr 5}
 $color${font Open Sans:bold:size=8.5}External IP ${font}${alignr}${execi 60 curl http://ip.tupeux.com --connect-timeout 2 | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*"}$font
 ${voffset -14}$alignc${execpi 4 echo "\${font}\${color}ping: \${font Open Sans:bold:size=8.5}\${color #66aaff}$(ping -W 1 -c 1 8.8.8.8 -q | grep rtt | egrep [0-9]+\.[0-9]+ -o | head -n 2 | tail -n 1)\${font}\${color} ms"}
 
-# |--- ETHERNET (enp0s3)
-${voffset -10}${font Open Sans:bold:size=8.5}Ethernet $font$alignr ${addr enp0s3}
-↑ ${upspeedf enp0s3} kb/s $alignr ${totalup enp0s3}
-${voffset -14}$alignc${upspeedgraph enp0s3 10,120  000000 aaddff}
-↓ ${downspeedf enp0s3} kb/s $alignr ${totaldown enp0s3}
-${voffset -14}$alignc${downspeedgraph enp0s3 10,120  000000 66aaff}
+# |--- ETHERNET (enp3s0)
+${voffset -10}${font Open Sans:bold:size=8.5}Ethernet $font$alignr ${addr enp3s0}
+↑ ${upspeedf enp0s3} kb/s $alignr ${totalup enp3s0}
+${voffset -14}$alignc${upspeedgraph enp3s0 10,120  000000 aaddff}
+↓ ${downspeedf enp3s0} kb/s $alignr ${totaldown enp3s0}
+${voffset -14}$alignc${downspeedgraph enp3s0 10,120  000000 66aaff}
 #
 # |--- WIFI (wlan0) [optional]
 #${voffset -10}${font Open Sans:bold:size=8.5}WiFi $font${wireless_bitrate wlan0} $alignr ${addr wlan0}

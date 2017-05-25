@@ -17,7 +17,7 @@ double_buffer yes
 own_window yes
 own_window_type normal
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_colour BEBEBE
+own_window_colour 000000
 own_window_argb_visual yes
 own_window_transparent yes
 minimum_size 0 0
@@ -45,23 +45,23 @@ TEXT
 ${font Open Sans:size=20}ARCHLINUX.ORG
 # |------ NEWS
 ${font Open Sans:Bold:size=10}${color dodgerblue3}NEWS ${hr 5}$color$font
-${voffset 1}${exec python2 ./news.py archlinux_news}${voffset 5}
+${voffset 1}${exec python3 ./news.py archlinux_news}${voffset 5}
 
 # |------ PACKAGES
 ${font Open Sans:Bold:size=10}${color dodgerblue3}PACKAGES ${hr 5}$color$font
-${voffset 1}${exec python2 ./news.py archlinux_packages}${voffset 10}
+${voffset 1}${exec python3 ./news.py archlinux_packages}${voffset 10}
 # |--- LINUXJOURNAL.COM
 ${font Open Sans:size=20}LINUX JOURNAL
 # |------ NEWS
 ${font Open Sans:Bold:size=10}${color dodgerblue3}NEWS ${hr 5}$color$font
-${voffset 1}${exec python2 ./news.py linuxjournal_com}${voffset 10}
+${voffset 1}${exec python3 ./news.py linuxjournal_com}${voffset 10}
 # |--- LINUX.COM
 ${font Open Sans:size=20}LINUX.COM
 # |------ ALL
 ${font Open Sans:Bold:size=10}${color dodgerblue3}ALL ${hr 5}$color$font
-${voffset 1}${exec python2 ./news.py linux_com_all}${voffset 10}
+${voffset 1}${exec python3 ./news.py linux_com_all}${voffset 10}
 # |--- OMGUBUNTU.CO.UK
 ${font Open Sans:size=20}OMG! UBUNTU!
 # |------ LATEST
 ${font Open Sans:Bold:size=10}${color dodgerblue3}LATEST ${hr 5}$color$font
-${voffset 1}${exec python2 ./news.py omg_ubuntu_co_uk}
+${voffset 1}${exec python3 ./news.py omg_ubuntu_co_uk}
